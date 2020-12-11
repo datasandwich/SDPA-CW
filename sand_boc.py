@@ -56,8 +56,15 @@ class Customer:
         
         
 """"Here I'd like to use the input to create some sort of class instance name, and also declare the instance's name"""
-my_object =Customer(name='dave')
 
+customer_db={}
+def main_menu():
+    
+    user_input=input('enter name')
+    customer =Customer(name=user_input)
+    customer_db[user_input]=customer
+
+'''
 print(my_object)
 print(my_object.inquire())
 print(my_object.rent_car())
