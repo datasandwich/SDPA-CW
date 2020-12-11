@@ -9,9 +9,9 @@ This is a temporary script file.
 
 class RentalShop:
     def __init__(self):
-        self.stock = {"Hb":{'quantity':4,'price':30},
-                      'Sed':{'quantity':3,'price':50},
-                      'SUV':{'quantity':3,'price':100}}    
+        self.stock = {"Hb":{'quantity':4,'price':{'week':30,'week+':25}},
+                      'Sed':{'quantity':3,'price':{'week':50,'week+':40}},
+                      'SUV':{'quantity':3,'price':{'week':100,'week+':90}}} 
 
     def display_inventory_and_prices(self):
         return self.stock
@@ -22,10 +22,12 @@ class RentalShop:
         print(self.stock)
         
     def process_return_request(self,car_type,days):
-        print(days)
+        days=int(days)
         self.stock[car_type]['quantity'] +=1
-        rate = self.stock[car_type]['price']
-        charge = rate * int(days)
+        if days<7:
+            rate = self.stock[car_type]['price']['week']
+        else:rate = self.stock[car_type]['price']['week+']
+        charge = rate * days
         print('Bill:',
               '\nType: ',car_type,
               '\nPeriod: ',days,
