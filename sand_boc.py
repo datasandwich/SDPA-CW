@@ -15,6 +15,7 @@ class RentalShop:
         
 
     def display_inventory_and_prices(self):
+        
         return self.stock
     
     def process_rent_request(self,car_type,days):
@@ -67,11 +68,13 @@ def main_menu():
 my_object=Customer('dave')
 my_other_object=Customer('john')
 print(my_object)
-print(my_object.inquire())
+#print(my_object.inquire())
+
 print(my_object.rent_car())
+'''
 print(my_other_object.rent_car())
 print(my_other_object.return_car())
 print(my_object.return_car())
 #print(my_object.return_car())
-
+'''
     
