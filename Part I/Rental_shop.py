@@ -7,12 +7,14 @@ Created on Fri Dec 11 15:05:15 2020
 """
 
 class RentalShop:
-    def __init__(self):
-        self.stock = {"Hb":{'quantity':4,'price':{'week':30,'week+':25}},
-                      'Sed':{'quantity':3,'price':{'week':50,'week+':40}},
-                      'SUV':{'quantity':3,'price':{'week':100,'week+':90}}} 
+    stock = {"Hb":{'quantity':4,'price':{'week':30,'week+':25}},
+         'Sed':{'quantity':3,'price':{'week':50,'week+':40}},
+         'SUV':{'quantity':3,'price':{'week':100,'week+':90}}} 
+    #def __init__(self):
+        
 
     def display_inventory_and_prices(self):
+        
         return self.stock
     
     def process_rent_request(self,car_type,days):
