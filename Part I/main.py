@@ -13,11 +13,14 @@ Menu.login(Menu.customers)
 
 '''
 Errors
-Customers can rent more than one vehicle
-Requests to hire a car for an invalid time-period, such as a negative number of days.
-Rent a car with unlisted type/empty type.
-Check stock availability for preferred vehicle
+
 check customer name doesn't contain numbers
+
+
+Info
+
+ Every function written is commented, in your own words, using a doc-string format that describes its behavior, parameters, returns, and highlights any special cases.
+There is a comment at the top of each code file you write with your name, section, and a brief description of what that program does.
 '''
 
 
