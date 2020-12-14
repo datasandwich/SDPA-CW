@@ -14,7 +14,7 @@ class RentalShop:
         
 
     def display_inventory_and_prices(self):
-        
+        print('Stock list: ')
         return self.stock
     
     def process_rent_request(self,car_type,days):
