@@ -11,36 +11,35 @@ class Menu():
     customers={}
     def login(customers):
         
-        customer_name=input("Please enter your name: ")
+        customer_name=input("Welcome to My Car Rental. Please enter your name to login: \n")
            
             
         try: isinstance(customers[customer_name],Customer)
         except: 
                 KeyError()
-                
+                print('\nNew customer account created.',
+                      '\nUsername: {}\n'.format(customer_name))
                 Menu.display_customer_menu(customer_name)
-        print("Welcome back {}".format(customer_name))        
+        print("Welcome back {}.\n".format(customer_name),
+              'You have successfully returned your car!. Please view your bill below:\n\n')        
         Menu.customers[customer_name].return_car()
-        print('{} logged out'.format(customer_name))
+        print('You have been logged out of your account.')
         Menu.login(Menu.customers)
         #Menu.display_returning_customer_menu(customer_name)
                 
     def display_customer_menu(customer_name):
-        print('\nNew customer: {}'.format(customer_name),
-                          '\nInquire [1]'
-                          '\nRent a car [2]'
-                          )
-        
-            
-        
+        print(
+              '\nPlease select an option from the menu below.',
+              '\n[1] Inquire '
+              '\n[2] Rent a car ')
         try: 
             user_input=int(input())
             if user_input<1 or user_input>2:
-                print('Please enter either 1 or 2\n')
+                print('Please enter either 1 or 2!\n')
                 Menu.display_customer_menu(customer_name)
         except: 
             ValueError
-            print('Please enter an integer')
+            print('Please enter an integer!\n')
             Menu.display_customer_menu(customer_name) 
      
         if user_input==1:
@@ -48,55 +47,26 @@ class Menu():
             Menu.display_customer_menu(customer_name)
         elif user_input==2:
             while True:
-                        car_type=input('car type?')
+                        car_type=input('Which car would you like to rent?\n')
                         if car_type == "Hatchback" or car_type == "Sedan" or car_type == "SUV":
                             break
-                        else: print("Please specify either Hatchback, Sedan or SUV")
+                        else: print("Please specify either Hatchback, Sedan or SUV!\n")
             while True:
                 try:
                     
-                    days=int(input("days?")) 
+                    days=int(input("How many days would you like to rent the car for?\n")) 
                     if days<1:
-                        print("Please enter a valid number of days")
+                        print("Please enter a valid number of days!\n")
                     
                     else:break
                 except: 
                     ValueError 
-                    print('Enter an integer\n')
+                    print('Please enter an integer!\n')
            
             Menu.customers[customer_name]=Customer(customer_name,car_type,days)
          #login(customers)
             Menu.customers[customer_name].rent_car()
             
-            print('\n{} logged out'.format(customer_name))
+            print('\nYou have been logged out of your account.\n')
             Menu.login(Menu.customers)
     
-     
-'''
-    def display_returning_customer_menu(customer_name):
-        print('\nReturning customer: {}'.format(customer_name),
-           #'\nInquire [1]'
-           #'\nRent a car [2]'
-           '\nReturn a car [1]')
-        try: 
-            user_input=int(input())
-            if user_input+1:
-                print('Please enter 1')
-                Menu.display_returning_customer_menu(customer_name)
-        except: 
-            ValueError
-            print('Please enter an integer')
-            Menu.display_returning_customer_menu(customer_name)
-       
-        if user_input==1:
-            Menu.customers[customer_name].inquire()
-            Menu.display_returning_customer_menu(customer_name)
-     
-        if user_input==1:
-            Menu.customers[customer_name].return_car()
-            print('{} logged out'.format(customer_name))
-            Menu.login(Menu.customers)
-        else: 
-            print('{} logged out'.format(customer_name))
-            Menu.login(Menu.customers)
-            '''

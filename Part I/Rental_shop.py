@@ -13,6 +13,7 @@ class RentalShop:
     #def __init__(self):
         
     def display_inventory():
+        print("Stock list: \n\n")
         print("{} | {}".format('Car type','Quantity'))
         car_type=list(RentalShop.stock.keys())
         quantity=[RentalShop.stock['Hatchback']['quantity'],
@@ -23,7 +24,7 @@ class RentalShop:
         
     def display_inventory_and_prices():
         
-        print("{} | {} | {} | {}".format('Car type','Quantity','Daily rate up to one week (£)','Daily rentals after one week (£)'))
+        print("{} | {} | {} | {}".format('Car type','Quantity','Daily rate for less than 7 days (£)','Daily rate for more than 7 days (£)'))
         car_type=list(RentalShop.stock.keys())
         quantity=[RentalShop.stock['Hatchback']['quantity'],
                   RentalShop.stock['Sedan']['quantity'],
@@ -42,9 +43,9 @@ class RentalShop:
     def process_rent_request(self,car_type,days):
         if self.stock[car_type]['quantity']>0:
             self.stock[car_type]['quantity'] -=1
-        else:return "Not available"
-        print('\nYou have rented {} for {} days\n'.format(car_type,days))
-        return RentalShop.display_inventory()
+        else:return print("{} is currently not available. Please login again and select a different car.\n".format(car_type))
+        print('\nYou have rented a(n) {} for {} days\n'.format(car_type,days))
+        return print(RentalShop.display_inventory())
         
     def process_return_request(self,car_type,days):
         days=int(days)
