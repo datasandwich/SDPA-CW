@@ -12,17 +12,39 @@ class RentalShop:
          'SUV':{'quantity':3,'price':{'week':100,'week+':90}}} 
     #def __init__(self):
         
-
+    def display_inventory():
+        print("{} | {}".format('Car type','Quantity'))
+        car_type=list(RentalShop.stock.keys())
+        quantity=[RentalShop.stock['Hatchback']['quantity'],
+                  RentalShop.stock['Sedan']['quantity'],
+                  RentalShop.stock['SUV']['quantity']]
+        for i in range(len(RentalShop.stock.items())):    
+            print("{:<12}  {:<20}".format(car_type[i],quantity[i]))
+        
     def display_inventory_and_prices():
-        print('Stock list: ')
-        return RentalShop.stock
+        
+        print("{} | {} | {} | {}".format('Car type','Quantity','Daily rate up to one week (£)','Daily rentals after one week (£)'))
+        car_type=list(RentalShop.stock.keys())
+        quantity=[RentalShop.stock['Hatchback']['quantity'],
+                  RentalShop.stock['Sedan']['quantity'],
+                  RentalShop.stock['SUV']['quantity']]
+        price_week=[RentalShop.stock['Hatchback']['price']['week'],
+                    RentalShop.stock['Sedan']['price']['week'],
+                    RentalShop.stock['SUV']['price']['week']]
+        price_week_plus=[RentalShop.stock['Hatchback']['price']['week+'],
+                    RentalShop.stock['Sedan']['price']['week+'],
+                    RentalShop.stock['SUV']['price']['week+']]
+    
+        for i in range(len(RentalShop.stock.items())):    
+            print("{:<12}  {:<20}  {:<30}  {}".format(car_type[i],quantity[i],price_week[i],price_week_plus[i]))
+        
     
     def process_rent_request(self,car_type,days):
         if self.stock[car_type]['quantity']>0:
             self.stock[car_type]['quantity'] -=1
         else:return "Not available"
         print('\nYou have rented {} for {} days\n'.format(car_type,days))
-        return self.stock
+        return RentalShop.display_inventory()
         
     def process_return_request(self,car_type,days):
         days=int(days)
@@ -35,5 +57,6 @@ class RentalShop:
               '\nType: ',car_type,
               '\nPeriod: ',days,
               '\nRate: ',rate,
-              '\nCharge: ',charge)
-        print(self.stock)
+              '\nCharge: ',charge,
+              '\n')
+        return RentalShop.display_inventory()

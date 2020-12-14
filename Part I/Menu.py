@@ -18,30 +18,34 @@ class Menu():
         except: 
                 KeyError()
                 
-                Menu.display_new_customer_menu(customer_name)
+                Menu.display_customer_menu(customer_name)
+        print("Welcome back {}".format(customer_name))        
+        Menu.customers[customer_name].return_car()
+        print('{} logged out'.format(customer_name))
+        Menu.login(Menu.customers)
+        #Menu.display_returning_customer_menu(customer_name)
                 
-        Menu.display_returning_customer_menu(customer_name)
-                
-    def display_new_customer_menu(customer_name):
-        print('New customer: {}'.format(customer_name),
+    def display_customer_menu(customer_name):
+        print('\nNew customer: {}'.format(customer_name),
                           '\nInquire [1]'
                           '\nRent a car [2]'
                           )
-     
-        try:user_input=int(input()) 
+        
+            
+        
+        try: 
+            user_input=int(input())
+            if user_input<1 or user_input>2:
+                print('Please enter either 1 or 2\n')
+                Menu.display_customer_menu(customer_name)
         except: 
-            ValueError 
-            print('Enter an integer\n')
-            Menu.display_new_customer_menu(customer_name)
-        if user_input < 1 or user_input >3:
-            print('Enter either 1 or 2\n')
-            Menu.display_new_customer_menu(customer_name)
-      
-         
+            ValueError
+            print('Please enter an integer')
+            Menu.display_customer_menu(customer_name) 
      
         if user_input==1:
             Customer.inquire()
-            Menu.display_new_customer_menu(customer_name)
+            Menu.display_customer_menu(customer_name)
         elif user_input==2:
             while True:
                         car_type=input('car type?')
@@ -68,28 +72,31 @@ class Menu():
             Menu.login(Menu.customers)
     
      
-
+'''
     def display_returning_customer_menu(customer_name):
-        print('Returning customer: {}'.format(customer_name),
-           '\nInquire [1]'
+        print('\nReturning customer: {}'.format(customer_name),
+           #'\nInquire [1]'
            #'\nRent a car [2]'
-           '\nReturn a car [2]')
-        try:user_input=int(input()) 
+           '\nReturn a car [1]')
+        try: 
+            user_input=int(input())
+            if user_input+1:
+                print('Please enter 1')
+                Menu.display_returning_customer_menu(customer_name)
         except: 
-            ValueError 
-            print('Enter an integer\n')
-            Menu.display_new_customer_menu(customer_name)
-        if user_input < 1 or user_input >2:
-            print('Enter either 1 or 2\n')
-            Menu.display_new_customer_menu(customer_name)
+            ValueError
+            print('Please enter an integer')
+            Menu.display_returning_customer_menu(customer_name)
+       
         if user_input==1:
             Menu.customers[customer_name].inquire()
             Menu.display_returning_customer_menu(customer_name)
-    
-        elif user_input==2:
+     
+        if user_input==1:
             Menu.customers[customer_name].return_car()
             print('{} logged out'.format(customer_name))
             Menu.login(Menu.customers)
         else: 
-            print('Enter an integer between 1 and 3')
-            Menu.display_returning_customer_menu(customer_name) 
+            print('{} logged out'.format(customer_name))
+            Menu.login(Menu.customers)
+            '''
