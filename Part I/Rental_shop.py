@@ -20,9 +20,9 @@ class RentalShop:
     def process_rent_request(self,car_type,days):
         if self.stock[car_type]['quantity']>0:
             self.stock[car_type]['quantity'] -=1
-        else:return print("not available")
-        print('You have rented {} for {} days'.format(car_type,days))
-        print(self.stock)
+        else:return "Not available"
+        print('\nYou have rented {} for {} days\n'.format(car_type,days))
+        return self.stock
         
     def process_return_request(self,car_type,days):
         days=int(days)

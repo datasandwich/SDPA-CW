@@ -20,7 +20,7 @@ class Customer:
         print(RentalShop.display_inventory_and_prices())
     
     def rent_car(self):
-        self.shop.process_rent_request(self.car_type,self.days)
+        print(self.shop.process_rent_request(self.car_type,self.days))
         
     def return_car(self):
         self.shop.process_return_request(self.car_type,self.days)
