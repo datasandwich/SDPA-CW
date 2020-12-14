@@ -3,18 +3,43 @@
 """
 Created on Mon Dec 14 11:22:21 2020
 
-@author: datasandwich
+@author: datasandwich (Jarek Ettl, of20499)
+@description: 
+    This program defines the Menu class. 
+    The Menu class can:
+        Login customers
+        Display an interactive menu
+        
 """
 from Customer import Customer
 
 class Menu():
+    
+    """Initialise class attributes"""
+    
     customers={}
-    def login(customers):
+    
+    def login():
+        
+        """Function summary
+        
+        The login function creates accounts for new customers and subsequently displays the menu.
+        For the existing customers, it processes the return of their rental car.
+        
+        Returns:
+            if the customer is new:
+                str: Message informing that an account has been created for them
+                str: The customers username
+            else:
+                str: Welcoming back the existing customer
+                str: Message informing the customer that they have been logged out of the system
+                
+            
+        """
         
         customer_name=input("Welcome to My Car Rental. Please enter your name to login: \n")
            
-            
-        try: isinstance(customers[customer_name],Customer)
+        try: isinstance(Menu.customers[customer_name],Customer)
         except: 
                 KeyError()
                 print('\nNew customer account created.',
@@ -25,9 +50,21 @@ class Menu():
         Menu.customers[customer_name].return_car()
         print('You have been logged out of your account.')
         Menu.login(Menu.customers)
-        #Menu.display_returning_customer_menu(customer_name)
+        
                 
     def display_customer_menu(customer_name):
+        
+        """Function summary
+        
+        The display_customer_menu function presents the customer with an interactive menu.
+        
+        Parameters:
+            customer_name(str): The name of the customer currently logged into the system
+            
+        Returns:
+            str: Message informing the customer that they have been logged out of the system
+        """
+        
         print(
               '\nPlease select an option from the menu below.',
               '\n[1] Inquire '
@@ -64,9 +101,7 @@ class Menu():
                     print('Please enter an integer!\n')
            
             Menu.customers[customer_name]=Customer(customer_name,car_type,days)
-         #login(customers)
             Menu.customers[customer_name].rent_car()
-            
             print('\nYou have been logged out of your account.\n')
             Menu.login(Menu.customers)
     

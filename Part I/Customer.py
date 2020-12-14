@@ -6,7 +6,7 @@ Created on Fri Dec 11 15:05:02 2020
 @author: datasandwich (Jarek Ettl, of20499)
 @description: 
     This program defines the Customer class. 
-    The Customer class allos customers to:
+    The Customer class allows customers to:
         Inquire about available stock and prices;
         Rent a car;
         Return a car they have previously rented.
@@ -18,7 +18,7 @@ class Customer:
     
     def __init__(self, name, car_type, days):
         
-        """Initialize instance attributes"""
+        """Initialise instance attributes"""
         
         self.name = name
         self.shop = RentalShop()
