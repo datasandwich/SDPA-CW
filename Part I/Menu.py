@@ -33,8 +33,6 @@ class Menu():
             else:
                 str: Welcoming back the existing customer
                 str: Message informing the customer that they have been logged out of the system
-                
-            
         """
         
         customer_name=input("Welcome to My Car Rental. Please enter your name to login: \n")
