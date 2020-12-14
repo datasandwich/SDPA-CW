@@ -16,16 +16,10 @@ class Customer:
         self.car_type = car_type
         self.days = days
         
-    def inquire(self):
-        print(self.shop.display_inventory_and_prices())
+    def inquire():
+        print(RentalShop.display_inventory_and_prices())
     
     def rent_car(self):
-        
-        car_type=input('car type')
-        days=input('days')
-        self.car_type=car_type
-        self.days=days
-        
         self.shop.process_rent_request(self.car_type,self.days)
         
     def return_car(self):

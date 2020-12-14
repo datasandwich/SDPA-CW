@@ -7,18 +7,20 @@ Created on Fri Dec 11 15:05:15 2020
 """
 
 class RentalShop:
-    stock = {"Hb":{'quantity':4,'price':{'week':30,'week+':25}},
-         'Sed':{'quantity':3,'price':{'week':50,'week+':40}},
+    stock = {"Hatchback":{'quantity':4,'price':{'week':30,'week+':25}},
+         'Sedan':{'quantity':3,'price':{'week':50,'week+':40}},
          'SUV':{'quantity':3,'price':{'week':100,'week+':90}}} 
     #def __init__(self):
         
 
-    def display_inventory_and_prices(self):
+    def display_inventory_and_prices():
         print('Stock list: ')
-        return self.stock
+        return RentalShop.stock
     
     def process_rent_request(self,car_type,days):
-        self.stock[car_type]['quantity'] -=1
+        if self.stock[car_type]['quantity']>0:
+            self.stock[car_type]['quantity'] -=1
+        else:return print("not available")
         print('You have rented {} for {} days'.format(car_type,days))
         print(self.stock)
         
