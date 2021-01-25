@@ -92,7 +92,7 @@ class RentalShop:
             self.stock[car_type]['quantity'] -=1
         else:return print("{} is currently not available. Please login again and select a different car.\n".format(car_type))
         
-        return print('\nYou have rented a(n) {} for {} days\n'.format(car_type,days)), print(RentalShop.display_inventory())
+        return print('\nYou have rented a(n) {} for {} days\n'.format(car_type,days)), RentalShop.display_inventory()
         
     def process_return_request(self,car_type,days):
         
