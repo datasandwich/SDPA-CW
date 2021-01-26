@@ -68,20 +68,24 @@ class Menu():
               '\nPlease select an option from the menu below.',
               '\n[1] Inquire '
               '\n[2] Rent a car ')
+        #user_input=input()
         
+        
+       
         try: 
             user_input=int(input())
             if user_input<1 or user_input>2:
-                print('Please enter either 1 or 2!\n')
-                Menu.display_customer_menu(customer_name)
+                return 'Please enter either 1 or 2!\n'
+                #Menu.display_customer_menu(customer_name)
         except: 
             ValueError
-            print('Please enter an integer!\n')
-            Menu.display_customer_menu(customer_name) 
+            return 'Please enter an integer!\n'
+            #Menu.display_customer_menu(customer_name) 
      
         if user_input==1:
-            Customer.inquire()
-            Menu.display_customer_menu(customer_name)
+            return 'Customer.inquire()'
+            #Customer.inquire()
+            #Menu.display_customer_menu(customer_name)
         elif user_input==2:
             
     
@@ -89,22 +93,22 @@ class Menu():
                         car_type=input('Which car would you like to rent?\n')
                         if car_type == "Hatchback" or car_type == "Sedan" or car_type == "SUV":
                             break
-                        else: print("Please specify either Hatchback, Sedan or SUV!\n")
+                        else: return "Please specify either Hatchback, Sedan or SUV!\n"
                   
             while True:
                 try:
                     
                     days=int(input("How many days would you like to rent the car for?\n")) 
                     if days<1:
-                        print("Please enter a valid number of days!\n")
+                        return "Please enter a valid number of days!\n"
                     
                     else:break
                 except: 
                     ValueError 
-                    print('Please enter an integer!\n')
+                    return 'Please enter an integer!\n'
            
             Menu.customers[customer_name]=Customer(customer_name,car_type,days)
             Menu.customers[customer_name].rent_car()
-            print('\nYou have been logged out of your account.\n')
-            Menu.login(Menu.customers)
+            return '\nYou have been logged out of your account.\n'
+            #Menu.login(Menu.customers)
     
